@@ -1,0 +1,8 @@
+D:\VS\All_Home_Works\HomeWork-3-fight\bin\Debug\HomeWork-3-fight.exe.config
+D:\VS\All_Home_Works\HomeWork-3-fight\bin\Debug\HomeWork-3-fight.exe
+D:\VS\All_Home_Works\HomeWork-3-fight\bin\Debug\HomeWork-3-fight.pdb
+D:\VS\All_Home_Works\HomeWork-3-fight\obj\Debug\HomeWork-3-fight.csproj.AssemblyReference.cache
+D:\VS\All_Home_Works\HomeWork-3-fight\obj\Debug\HomeWork-3-fight.csproj.SuggestedBindingRedirects.cache
+D:\VS\All_Home_Works\HomeWork-3-fight\obj\Debug\HomeWork-3-fight.csproj.CoreCompileInputs.cache
+D:\VS\All_Home_Works\HomeWork-3-fight\obj\Debug\HomeWork-3-fight.exe
+D:\VS\All_Home_Works\HomeWork-3-fight\obj\Debug\HomeWork-3-fight.pdb
