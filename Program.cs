@@ -10,48 +10,53 @@ namespace HomeWork_3_fight
     {
         static void Main(string[] args)
         {
-            int myHealth = 500;
+            int playerHealth = 500;
             int spellRashamonHealth = 100;
             int spellRashamonDamage = 300;
-            int spellHuganzakura = 100;
+            int spellHuganzakura = 200;
             int spellVoid = 250;
             int spellFireBall = 100;
-            int mySpells = 0;
+            int playerSpells = 0;
             int bossHealth = 1000;
             int bossDamage = 100;
+            int numberSpellRashamon = 1;
+            int numberSpellHuganzakura = 2;
+            int numberSpellVoid = 3;
+            int numberSpellFireball = 4;
             bool shadowSpiritSummoned = false;
+            bool spellVoidUsed = false;
             Console.WriteLine("Вы попали на арену. Приготовьтесь к битве!");
             Console.WriteLine("Изучите ваши заклинания: ");
-            Console.WriteLine($"1 - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
-            Console.WriteLine($"2 - заклинание Хуганзара наносит {spellHuganzakura} урона, но может применено только после теневого духа");
-            Console.WriteLine($"3 - заклинание позволяет скрыться в разломе и восстановить {spellVoid} хп");
-            Console.WriteLine($"4 - заклинание Огненный шар наносит {spellFireBall} урона");
+            Console.WriteLine($"{numberSpellRashamon} - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
+            Console.WriteLine($"{numberSpellHuganzakura} - заклинание Хуганзара наносит {spellHuganzakura} урона, но может применено только после теневого духа");
+            Console.WriteLine($"{numberSpellVoid} - заклинание позволяет скрыться в разломе и восстановить {spellVoid} хп. Можно использовать один раз за бой");
+            Console.WriteLine($"{numberSpellFireball} - заклинание Огненный шар наносит {spellFireBall} урона");
             Console.WriteLine("Бой начинается!");
 
-            while (myHealth > 0 && bossHealth > 0)
+            while (playerHealth > 0 && bossHealth > 0)
             {
-                mySpells = Convert.ToInt32(Console.ReadLine());
+                playerSpells = Convert.ToInt32(Console.ReadLine());
 
-                if (mySpells == 1)
+                if (playerSpells == numberSpellRashamon)
                 {
                     bossHealth -= spellRashamonDamage;
                     Console.WriteLine($"Вы использовали способность Рашамон и  нанесли {spellRashamonDamage} урона");
-                    myHealth -= bossDamage;
-                    myHealth -= spellRashamonHealth;
+                    playerHealth -= bossDamage;
+                    playerHealth -= spellRashamonHealth;
                     shadowSpiritSummoned = true;
                     Console.WriteLine($"Вы получили урон от Босса {bossDamage} и заклинания теневого духа{spellRashamonHealth}");
-                    Console.WriteLine($"{myHealth} - Ваше здоровье после атаки");
+                    Console.WriteLine($"{playerHealth} - Ваше здоровье после атаки");
                     Console.WriteLine($"{bossHealth} - Здоровья босса после атаки");
                 }
-                else if (mySpells == 2)
+                else if (playerSpells == numberSpellHuganzakura)
                 {
                     if (shadowSpiritSummoned)
                     {
                         bossHealth -= spellHuganzakura;
                         Console.WriteLine($"Вы использовали способность Хуганзакуру и нанесли {spellHuganzakura} урона");
-                        myHealth -= bossDamage; 
+                        playerHealth -= bossDamage;
                         Console.WriteLine($"Вы получили {bossDamage} урона от Босса");
-                        Console.WriteLine($"Ваше здоворье {myHealth} после атаки");
+                        Console.WriteLine($"Ваше здоворье {playerHealth} после атаки");
                         Console.WriteLine($"Здоровье Босса {bossHealth} после атаки");
                     }
                     else
@@ -59,37 +64,47 @@ namespace HomeWork_3_fight
                         Console.WriteLine("Сначала вы должны призвать теневого духа");
                     }
                 }
-                
-                if (mySpells == 3)
+
+                if (playerSpells == numberSpellVoid)
                 {
-                    myHealth += spellVoid;
-                    Console.WriteLine($"Вы восстановили себе {spellVoid} здоровья!");
-                    Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
+                    if (spellVoidUsed != true)
+                    {
+                        playerHealth += spellVoid;
+                        Console.WriteLine($"Вы восстановили себе {spellVoid} здоровья!");
+                        Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
+                        Console.WriteLine($"Ваше здоровье {playerHealth}");
+                        Console.WriteLine($"Здоровье босса {bossHealth}");
+                        spellVoidUsed = true;
+                    }
+                    else if (spellVoidUsed == true)
+                    {
+                        Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
+                    }
                 }
                 
-                if (mySpells == 4)
+                if (playerSpells == numberSpellFireball)
                 {
                     bossHealth -= spellFireBall;
                     Console.WriteLine($"Вы использовали заклинание Огненного шара и нанесли {spellFireBall} урона");
-                    myHealth -= bossDamage;
+                    playerHealth -= bossDamage;
                     Console.WriteLine($"Босс нанес вам {bossDamage} урона");
-                    Console.WriteLine($"после атаки у вас {myHealth} здоровья");
+                    Console.WriteLine($"после атаки у вас {playerHealth} здоровья");
                     Console.WriteLine($"после атаки у босса {bossHealth} здоровья");
                 }
             }
-            
-            if (myHealth <= 0 && bossHealth <= 0)
-                {
-                    Console.WriteLine("Ничья, оба мертвы");
-                }
+
+            if (playerHealth <= 0 && bossHealth <= 0)
+            {
+                Console.WriteLine("Ничья, оба мертвы");
+            }
             else if (bossHealth <= 0)
-                {
-                    Console.WriteLine("Вы победели!");
-                }
-            else if (myHealth <= 0)
-                {
-                    Console.WriteLine("Победа Босса!");
-                }
+            {
+                Console.WriteLine("Вы победели!");
+            }
+            else if (playerHealth <= 0)
+            {
+                Console.WriteLine("Победа Босса!");
+            }
 
             Console.ReadLine();
         }
