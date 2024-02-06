@@ -23,8 +23,8 @@ namespace HomeWork_3_fight
             int numberSpellHuganzakura = 2;
             int numberSpellVoid = 3;
             int numberSpellFireball = 4;
-            bool shadowSpiritSummoned = false;
-            bool spellVoidUsed = false;
+            bool isShadowSpiritSummoned = false;
+            bool isSpellVoidUsed = false;
             Console.WriteLine("Вы попали на арену. Приготовьтесь к битве!");
             Console.WriteLine("Изучите ваши заклинания: ");
             Console.WriteLine($"{numberSpellRashamon} - заклинание Рашамон призывыает теневого духа и наносит {spellRashamonDamage} урона, но отнимает {spellRashamonHealth} здоровья");
@@ -43,14 +43,14 @@ namespace HomeWork_3_fight
                     Console.WriteLine($"Вы использовали способность Рашамон и  нанесли {spellRashamonDamage} урона");
                     playerHealth -= bossDamage;
                     playerHealth -= spellRashamonHealth;
-                    shadowSpiritSummoned = true;
+                    isShadowSpiritSummoned = true;
                     Console.WriteLine($"Вы получили урон от Босса {bossDamage} и заклинания теневого духа{spellRashamonHealth}");
                     Console.WriteLine($"{playerHealth} - Ваше здоровье после атаки");
                     Console.WriteLine($"{bossHealth} - Здоровья босса после атаки");
                 }
                 else if (playerSpells == numberSpellHuganzakura)
                 {
-                    if (shadowSpiritSummoned)
+                    if (isShadowSpiritSummoned)
                     {
                         bossHealth -= spellHuganzakura;
                         Console.WriteLine($"Вы использовали способность Хуганзакуру и нанесли {spellHuganzakura} урона");
@@ -67,16 +67,16 @@ namespace HomeWork_3_fight
 
                 if (playerSpells == numberSpellVoid)
                 {
-                    if (spellVoidUsed != true)
+                    if (isSpellVoidUsed != true)
                     {
                         playerHealth += spellVoid;
                         Console.WriteLine($"Вы восстановили себе {spellVoid} здоровья!");
                         Console.WriteLine("Босс не может вас атаковать пока вы в разломе!");
                         Console.WriteLine($"Ваше здоровье {playerHealth}");
                         Console.WriteLine($"Здоровье босса {bossHealth}");
-                        spellVoidUsed = true;
+                        isSpellVoidUsed = true;
                     }
-                    else if (spellVoidUsed == true)
+                    else if (isSpellVoidUsed == true)
                     {
                         Console.WriteLine("Вы уже использовали это заклинание! Попробуйте другое");
                     }
